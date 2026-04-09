@@ -1,0 +1,2 @@
+C:\Users\Acer\Desktop\AndroidGame\FPUOC_Microjuegos\HorseRunner\PowerUP_team\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\Acer\Desktop\AndroidGame\FPUOC_Microjuegos\HorseRunner\PowerUP_team\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

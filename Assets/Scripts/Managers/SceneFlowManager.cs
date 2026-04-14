@@ -52,7 +52,6 @@ public class SceneFlowManager : MonoBehaviour
             ScoreManager.Instance.ResetScore();
         }
 
-        SceneManager.LoadScene("00_Boot");
         SceneManager.LoadScene("01_Menu");
         currentIndex = 0;
     }

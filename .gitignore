@@ -19,3 +19,18 @@
 *.svd
 .vs/
 .vsconfig
+
+# CMake / NDK / builds nativos
+.cmake/
+CMakeFiles/
+CMakeCache.txt
+*.ninja
+*.o
+*.obj
+*.bin
+*.log
+
+# Android / NDK temp
+.utmp/
+.gradle/
+.externalNativeBuild/

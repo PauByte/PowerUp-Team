@@ -1,15 +1,22 @@
+# =========================
+# Unity
+# =========================
 [Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
-/[Mm]emoryCaptures/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
 
-# Optional: IDE files
+# =========================
+# IDEs
+# =========================
 .vscode/
 .idea/
+.vs/
+.vsconfig
 *.csproj
 *.sln
 *.user
@@ -17,10 +24,18 @@
 *.pidb
 *.booproj
 *.svd
-.vs/
-.vsconfig
 
-# CMake / NDK / builds nativos
+# =========================
+# Android / Gradle / NDK
+# =========================
+.gradle/
+.externalNativeBuild/
+.cxx/
+.utmp/
+
+# =========================
+# CMake / builds nativos
+# =========================
 .cmake/
 CMakeFiles/
 CMakeCache.txt
@@ -30,7 +45,8 @@ CMakeCache.txt
 *.bin
 *.log
 
-# Android / NDK temp
-.utmp/
-.gradle/
-.externalNativeBuild/
+# =========================
+# Builds finales
+# =========================
+*.apk
+*.aab

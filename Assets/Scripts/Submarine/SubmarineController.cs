@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class SubmarineController : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class SubmarineController : MonoBehaviour
     private Rigidbody2D rb;
     private SubmarineScoreController scoreController;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource hitAudio;
+    [SerializeField] private AudioClip hitSound;
+
     private bool isGameOver = false;
 
     void Awake()
@@ -21,6 +26,9 @@ public class SubmarineController : MonoBehaviour
     void Start()
     {
         scoreController = FindObjectOfType<SubmarineScoreController>();
+
+        if (hitAudio == null)
+            hitAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -58,21 +66,34 @@ public class SubmarineController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            GameOver();
+            StartCoroutine(GameOverRoutine());
         }
     }
 
-    void GameOver()
+    IEnumerator GameOverRoutine()
     {
-        if (isGameOver) return;
-
         isGameOver = true;
 
         Debug.Log("GAME OVER");
 
+        //  SONIDO
+        if (hitAudio != null && hitSound != null)
+        {
+            hitAudio.PlayOneShot(hitSound);
+        }
+
+        //  MICRO FREEZE (impacto)
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(0.05f);
+
+        // Volver a velocidad lenta
+        Time.timeScale = 0.2f;
+
+        // Esperar 1 frame para asegurar audio
+        yield return null;
+
         rb.linearVelocity = Vector2.zero;
 
-        // 🔥 Llamar al sistema de score (que gestiona UI + escena)
         if (scoreController != null)
         {
             scoreController.GameOver();

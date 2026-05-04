@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class SubmarineScoreController : MonoBehaviour
 {
@@ -34,7 +35,6 @@ public class SubmarineScoreController : MonoBehaviour
                 scoreText.text = "Score: " + displayScore;
             }
 
-            // CONDICIÓN DE VICTORIA
             if (score >= 100f)
             {
                 Win();
@@ -48,20 +48,15 @@ public class SubmarineScoreController : MonoBehaviour
 
         isGameOver = true;
 
-        int finalScore = 100;
-
         Debug.Log("YOU WIN");
 
-        // AÑADIR AL SCORE GLOBAL
-        ScoreManager.Instance.AddScore(finalScore);
+        ScoreManager.Instance.AddScore(100);
 
         ShowResult("YOU WIN");
 
         StopGame();
 
-        Time.timeScale = 0.2f;
-
-        Invoke(nameof(LoadNext), 2f);
+        StartCoroutine(EndRoutine());
     }
 
     public void GameOver()
@@ -80,9 +75,22 @@ public class SubmarineScoreController : MonoBehaviour
 
         StopGame();
 
+        StartCoroutine(EndRoutine());
+    }
+
+    IEnumerator EndRoutine()
+    {
+        
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(0.05f);
+
+        
         Time.timeScale = 0.2f;
 
-        Invoke(nameof(LoadNext), 2f);
+        
+        yield return new WaitForSecondsRealtime(2f);
+
+        LoadNext();
     }
 
     void StopGame()

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObstacleMover : MonoBehaviour
 {
-    public float speed = 1.5f;
+    public float speed = 1f;
 
     private Transform player;
 

@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.52, z: 3.06}
-  m_LocalScale: {x: 3, y: 0.1, z: 25}
+  m_LocalScale: {x: 5, y: 0.1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4131049913371158179}
@@ -661,9 +661,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965d3c42ba2d99a4e82366af4abda7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMover
-  moveSpeed: 3
-  leftLimit: -1
-  rightLimit: 1
+  moveSpeed: 4
+  leftLimit: -1.5
+  rightLimit: 1.5
 --- !u!114 &6650800390504475546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,5 +1355,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMover
   moveSpeed: 2
-  leftLimit: -1
-  rightLimit: 1
+  leftLimit: -2
+  rightLimit: 2

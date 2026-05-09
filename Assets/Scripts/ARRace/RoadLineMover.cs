@@ -3,28 +3,26 @@ using UnityEngine;
 public class RoadLineMover : MonoBehaviour
 {
     public float speed = 2f;
-    public float resetDistance = -2f;
-    public float startDistance = 4f;
 
-    private Vector3 startPosition;
-    private Transform player;
-
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player").transform;
-
-        startPosition = transform.localPosition;
-    }
+    public float resetDistance = -0.438f;
+    public float startDistance = 0.438f;
 
     void Update()
     {
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        transform.Translate(
+            Vector3.back *
+            speed *
+            Time.deltaTime);
 
-        if (transform.localPosition.z < resetDistance)
+        if (transform.localPosition.z <
+            resetDistance)
         {
-            Vector3 pos = transform.localPosition;
+            Vector3 pos =
+                transform.localPosition;
 
-            pos.z = startDistance;
+            // mantener separación
+            pos.z +=
+                (startDistance - resetDistance);
 
             transform.localPosition = pos;
         }

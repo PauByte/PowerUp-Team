@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 3849370301296006571}
   - component: {fileID: 1136307337038635195}
   - component: {fileID: 4861605773054211065}
-  - component: {fileID: 8953868665337033047}
-  - component: {fileID: -1810105981268596917}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -93,40 +91,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8953868665337033047
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534850980620465072}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.21897498, y: 0.34533578, z: 0.74891776}
-  m_Center: {x: -0.01971202, y: 0.10981916, z: 0.32733306}
---- !u!114 &-1810105981268596917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534850980620465072}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e33c36bde483c4588d3a16c1d0c3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstacleMover
-  speed: 1
 --- !u!1 &7628837533365733403
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleMover
   speed: 1
+  destroyDistance: 2
 --- !u!65 &7713740411704986015
 BoxCollider:
   m_ObjectHideFlags: 0

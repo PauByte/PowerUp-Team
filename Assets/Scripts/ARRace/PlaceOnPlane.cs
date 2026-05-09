@@ -82,7 +82,10 @@ public class PlaceOnPlane : MonoBehaviour
                 Instantiate(
                     prefab,
                     hitPose.position,
-                    hitPose.rotation);
+                    Quaternion.identity);
+
+            spawnedObject.transform.rotation =
+                Quaternion.Euler(0, 0, 0);
 
             // ocultar texto
             if (instructionText != null)

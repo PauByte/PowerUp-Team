@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class IcebergSpawner : MonoBehaviour
 {
-    [Header("Reference")]
+    [Header("Prefabs")]
     [SerializeField]
     private GameObject icebergPrefab;
 
     [SerializeField]
+    private GameObject frozenIslandPrefab;
+
     private Transform player;
 
     [Header("Spawn")]
@@ -14,7 +16,7 @@ public class IcebergSpawner : MonoBehaviour
     private float spawnY = 7f;
 
     [SerializeField]
-    private float spawnRate = 2f;
+    private float spawnRate = 0.5f;
 
     private float timer;
 
@@ -33,9 +35,15 @@ public class IcebergSpawner : MonoBehaviour
 
     private float[] lanes;
 
+    private float gameTimer;
+
+    private bool islandEventActive = false;
+
+    private float islandCooldown = 10f;
+    private float nextIslandCheck = 5f;
+
     void Start()
     {
-        // buscar player automáticamente
         GameObject foundPlayer =
             GameObject.FindWithTag("Player");
 
@@ -47,20 +55,36 @@ public class IcebergSpawner : MonoBehaviour
 
         lanes = new float[]
         {
-        lane1,
-        lane2,
-        lane3,
-        lane4
+            lane1,
+            lane2,
+            lane3,
+            lane4
         };
     }
 
     void Update()
     {
+        gameTimer += Time.deltaTime;
         timer += Time.deltaTime;
 
-        if (timer >= spawnRate)
+        // revisar si toca evento isla
+        if (gameTimer >= nextIslandCheck)
+        {
+            nextIslandCheck += islandCooldown;
+
+            // 40% probabilidad
+            if (Random.value < 1f)
+            {
+                SpawnFrozenIsland();
+            }
+        }
+
+        // spawner normal
+        if (!islandEventActive &&
+            timer >= spawnRate)
         {
             SpawnIceberg();
+
             timer = 0f;
         }
     }
@@ -69,7 +93,6 @@ public class IcebergSpawner : MonoBehaviour
     {
         if (player == null) return;
 
-        // encontrar carril más cercano al player
         float closestLane =
             lanes[0];
 
@@ -106,5 +129,42 @@ public class IcebergSpawner : MonoBehaviour
             icebergPrefab,
             spawnPos,
             Quaternion.identity);
+    }
+
+    void SpawnFrozenIsland()
+    {
+        islandEventActive = true;
+
+        // ocupa dos carriles
+        int laneIndex =
+            Random.Range(
+                0,
+                lanes.Length - 1);
+
+        float centerX =
+            (
+                lanes[laneIndex] +
+                lanes[laneIndex + 1]
+            ) / 2f;
+
+        Vector3 spawnPos =
+            new Vector3(
+                centerX,
+                spawnY,
+                0f);
+
+        Instantiate(
+            frozenIslandPrefab,
+            spawnPos,
+            Quaternion.identity);
+
+        Invoke(
+            nameof(EndIslandEvent),
+            1f);
+    }
+
+    void EndIslandEvent()
+    {
+        islandEventActive = false;
     }
 }

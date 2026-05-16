@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Iceberg
   - ObstacleSub
+  - Boundary
+  - VRTarget
   layers:
   - Default
   - TransparentFX

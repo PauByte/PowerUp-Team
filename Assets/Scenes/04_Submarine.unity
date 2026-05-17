@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 361361091}
   - component: {fileID: 361361090}
   - component: {fileID: 361361092}
+  - component: {fileID: 361361093}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -273,6 +274,19 @@ MonoBehaviour:
   submarine: {fileID: 0}
   scoreText: {fileID: 526434943}
   resultText: {fileID: 668409045}
+--- !u!114 &361361093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361361089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee171a1656a47b46a91e5b8469e03fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrientationManager
+  usePortrait: 1
 --- !u!1 &419018408
 GameObject:
   m_ObjectHideFlags: 0

@@ -1144,6 +1144,7 @@ GameObject:
   - component: {fileID: 732835507}
   - component: {fileID: 732835506}
   - component: {fileID: 732835508}
+  - component: {fileID: 732835509}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1197,6 +1198,19 @@ MonoBehaviour:
   resultText: {fileID: 797582314}
   spawner: {fileID: 812228229}
   boat: {fileID: 284696801}
+--- !u!114 &732835509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732835505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee171a1656a47b46a91e5b8469e03fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrientationManager
+  usePortrait: 1
 --- !u!1 &797582312
 GameObject:
   m_ObjectHideFlags: 0

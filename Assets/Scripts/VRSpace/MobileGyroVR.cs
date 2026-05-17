@@ -2,37 +2,39 @@ using UnityEngine;
 
 public class MobileGyroVR : MonoBehaviour
 {
-    private bool gyroEnabled;
     private Gyroscope gyro;
 
     void Start()
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        EnableGyro();
-#endif
-    }
+        // bloquear orientación
+        Screen.orientation =
+            ScreenOrientation.Portrait;
 
-    void Update()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        if (gyroEnabled)
-        {
-            transform.localRotation =
-                gyro.attitude * Quaternion.Euler(90f, 0f, 0f);
-        }
-#endif
-    }
+        Screen.autorotateToLandscapeLeft = false;
+        Screen.autorotateToLandscapeRight = false;
+        Screen.autorotateToPortraitUpsideDown = false;
 
-    private bool EnableGyro()
-    {
         if (SystemInfo.supportsGyroscope)
         {
             gyro = Input.gyro;
             gyro.enabled = true;
-            gyroEnabled = true;
-            return true;
         }
+    }
 
-        return false;
+    void Update()
+    {
+        if (gyro != null)
+        {
+            Quaternion deviceRotation = gyro.attitude;
+
+            transform.localRotation =
+                Quaternion.Euler(90, 0, 0) *
+                new Quaternion(
+                    -deviceRotation.x,
+                    -deviceRotation.y,
+                    deviceRotation.z,
+                    deviceRotation.w
+                );
+        }
     }
 }

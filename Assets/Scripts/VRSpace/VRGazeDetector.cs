@@ -6,9 +6,22 @@ public class VRGazeDetector : MonoBehaviour
 
     private float timer = 0f;
 
+    private AudioSource destroySound;
+
+    void Start()
+    {
+        destroySound =
+            GetComponent<AudioSource>();
+    }
+
     void Update()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray =
+            new Ray(
+                transform.position,
+                transform.forward
+            );
+
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
@@ -19,7 +32,13 @@ public class VRGazeDetector : MonoBehaviour
 
                 if (timer >= gazeTime)
                 {
+                    if (destroySound != null)
+                    {
+                        destroySound.Play();
+                    }
+
                     Destroy(hit.collider.gameObject);
+
                     timer = 0f;
                 }
             }

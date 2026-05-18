@@ -7,6 +7,9 @@ public class VRSpawner : MonoBehaviour
     public float spawnDistance = 12f;
     public float spawnInterval = 2f;
 
+    // cámara VR
+    public Transform playerCamera;
+
     private float timer;
 
     void Start()
@@ -27,11 +30,22 @@ public class VRSpawner : MonoBehaviour
 
     void SpawnTarget()
     {
-        float randomX = Random.Range(-3f, 3f);
-        float randomY = Random.Range(0f, 2.5f);
+        if (playerCamera == null)
+            return;
 
+        // punto delante de donde mira
         Vector3 spawnPosition =
-            new Vector3(randomX, randomY, spawnDistance);
+            playerCamera.position +
+            playerCamera.forward * spawnDistance;
+
+        // pequeña variación para que no salgan EXACTAMENTE en el centro
+        spawnPosition +=
+            playerCamera.right *
+            Random.Range(-1.5f, 1.5f);
+
+        spawnPosition +=
+            playerCamera.up *
+            Random.Range(-1f, 1f);
 
         Instantiate(
             targetPrefab,

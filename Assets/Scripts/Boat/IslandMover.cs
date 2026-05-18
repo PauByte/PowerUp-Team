@@ -1,20 +1,18 @@
 using UnityEngine;
 
-public class IcebergMover : MonoBehaviour
+public class IslandMover : MonoBehaviour
 {
-    public float speed = 1.5f;
+    public float speed = 0.5f;
 
     public float destroyY = -7f;
 
     void Update()
     {
-        // mover hacia abajo
         transform.Translate(
             Vector3.down *
             speed *
             Time.deltaTime);
 
-        // destruir al salir pantalla
         if (transform.position.y <
             destroyY)
         {
